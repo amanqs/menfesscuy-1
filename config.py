@@ -38,12 +38,12 @@ biaya_bfrent = int(os.environ.get("BIAYA_BFRENT", "30"))
 hastag = os.environ.get("HASTAG", "#Girl #Boy #Ask #Find #Spill #Story").replace(" ", "|").lower()
 # =========================================================== #
 
-pic_boy = os.environ.get("PIC_BOY", "https://telegra.ph/file/a35541745ce3e3c4f5178.jpg")
-pic_girl = os.environ.get("PIC_GIRL", "https://telegra.ph/file/55efbdcad8af18a84500e.jpg")
+pic_boy = os.environ.get("PIC_BOY", "https://telegra.ph/file/c67bd36023648dc777bd9.jpg")
+pic_girl = os.environ.get("PIC_GIRL", "https://telegra.ph/file/cb885bcbf5081dbd45f27.jpg")
 # =========================================================== #
 
 pesan_join = os.environ.get("PESAN_JOIN", "Tidak Dapat Diakses Harap Join Terlebih Dahulu")
-start_msg = os.environ.get("START_MSG", "Hai {mention} 🌱\n\n<b>Alter FWB Bot</b> adalah Bot Auto Post, Semua Pesan Yang Kamu Kirim Akan Masuk Ke Channel @DuniaVirtualMenfess Secara Anonymous. Untuk Bantuan Ketik /help")
+start_msg = os.environ.get("START_MSG", "Hai {mention} 🌱\n\n<b>Alter FWB Bot</b> adalah Bot Auto Post, Semua Pesan Yang Kamu Kirim Akan Masuk Ke Channel @kuymenfesschannel Secara Anonymous. Untuk Bantuan Ketik /help")
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
 {mention}, Pesan Mu Gagal Terkirim Silahkan Gunakan Hashtag Berikut:
