@@ -10,7 +10,7 @@ async def bf_rent_handler(client: Client, msg: types.Message):
     top_rate = [] # total rate bf_rent
     top_id = [] # id bf_rent
     if len(bf_rent) == 0:
-        return await msg.reply('<b>Saat ini tidak ada Bf rent yang tersedia.</b>', True, enums.ParseMode.HTML)
+        return await msg.reply('<b>Saat ini tidak ada Jasa Pembuatan Bot yang tersedia.</b>', True, enums.ParseMode.HTML)
     else:
         for uid in bf_rent:
             rate = bf_rent[str(uid)]['rate']
@@ -18,8 +18,8 @@ async def bf_rent_handler(client: Client, msg: types.Message):
                 top_rate.append(rate)
                 top_id.append(uid)
         top_rate.sort(reverse=True)
-        pesan = "<b>Daftar Bf rent trusted</b>\n\n"
-        pesan += "No — Bf rent — Rating\n"
+        pesan = "<b>Daftar Jasa Pembuatan Bot</b>\n\n"
+        pesan += "No — Jasa Pembuatan Bot — Rating\n"
         index = 1
         for i in top_rate:
             if index > config.batas_bfrent:
