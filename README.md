@@ -7,8 +7,8 @@
 
 #### Deploy in your VPS
 ````bash
-git clone https://github.com/hikarikawai/menfesscuy/
-cd Menfess-Bot
+git clone https://github.com/hikarikawai/menfesscuy
+cd menfesscuy
 pip3 install -r requirements.txt
 python3 main.py
 ````
