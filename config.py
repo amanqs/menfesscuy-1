@@ -46,7 +46,7 @@ pic_girl = os.getenv("PIC_GIRL", "https://telegra.ph/file/cb885bcbf5081dbd45f27.
 # =========================================================== #
 
 pesan_join = os.getenv("PESAN_JOIN", "Tidak Dapat Diakses Harap Join Terlebih Dahulu")
-start_msg = os.getenv("START_MSG", "Hai {mention} 🌱\n\n<b>SM Menfess Bot</b> adalah Bot Auto Post, Semua Pesan Yang Kamu Kirim Akan Masuk Ke Channel @smmenfess Secara Anonymous. Untuk Bantuan Ketik /help")
+start_msg = os.getenv("START_MSG", "Hai {mention} 🌱\n\n<b>FWB AWSMxCIB</b> adalah Bot Auto Post, Semua Pesan Yang Kamu Kirim Akan Masuk Ke Channel @usernamech Secara Anonymous. Untuk Bantuan Ketik /help")
 
 gagalkirim_msg = os.getenv("GAGAL_KIRIM", """
 {mention}, Pesan Mu Gagal Terkirim Silahkan Gunakan Hashtag Berikut:
