@@ -1,58 +1,140 @@
 {
-  "name": "Small Sharp Tool",
-  "description": "This app does one little thing, and does it well.",
+  "name": "Menfess bot fwb",
+  "description": "mengirim pesan ke channel telegram secara anonymous",
   "keywords": [
-    "productivity",
-    "HTML5",
-    "scalpel"
+    "telegram",
+    "menfess",
+    "fwb"
   ],
-  "website": "https://small-sharp-tool.com/",
-  "repository": "https://github.com/jane-doe/small-sharp-tool",
-  "logo": "https://small-sharp-tool.com/logo.svg",
-  "success_url": "/welcome",
-  "scripts": {
-    "postdeploy": "bundle exec rake bootstrap"
-  },
+  "repository": "https://github.com/amanqs/menfesscuy-1",
+  "logo": "https://telegra.ph/file/a24d7daa6a191d6eb7176.jpg",
   "env": {
-    "SECRET_TOKEN": {
-      "description": "A secret key for verifying the integrity of signed cookies.",
-      "generator": "secret"
+    "BOT_TOKEN": {
+      "description": "Masukkan token bot kamu, didapatkan dari @Botfather",
+      "value": ""
     },
-    "WEB_CONCURRENCY": {
-      "description": "The number of processes to run.",
+    "API_HASH": {
+      "description": "app hash kamu, didapatkan dari my.telegram.org",
+      "value": ""
+    },
+    "API_ID": {
+      "description": "app id kmau, didapatkan dari my.telegram.org",
+      "value": ""
+    },
+    "DB_URL": {
+      "description": "dapatkan database kamu di https://cloud.mongodb.com/",
+      "value": ""
+    },
+    "DB_NAME": {
+      "description": "nama database",
+      "value": "telegram"
+    },
+    "CHANNEL_1": {
+      "description": "channel id, untuk mengirim menfess",
+      "value": "-100"
+    },
+    "CHANNEL_2": {
+      "description": "grup id, untuk mengcomment dichannel menfess",
+      "value": "-100"
+    },
+    "CHANNEL_LOG": {
+      "description": "channel log id, untuk melihat log user menfess",
+      "value": "-100"
+    },
+    "ID_ADMIN": {
+      "description": "ID OWNER BOT MENFESS",
+      "value": "907544310"
+    },
+    "BATAS_KIRIM": {
+      "description": "Batas kirim menfess perhari",
       "value": "5"
-    }
-  },
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "standard-1x"
-    }
-  },
-  "image": "heroku/ruby",
-  "addons": [
-    "openredis",
-    {
-      "plan": "mongolab:shared-single-small",
-      "as": "MONGO"
     },
-    {
-      "plan": "heroku-postgresql",
-      "options": {
-        "version": "9.5"
-      }
+    "BATAS_TALENT": {
+      "description": "Batas top talent",
+      "value": "10"
+    },
+    "BATAS_DADDY_SUGAR": {
+      "description": "Batas top talent",
+      "value": "10"
+    },
+    "BATAS_MOANSGIRL": {
+      "description": "Batas top moans girl",
+      "value": "10"
+    },
+    "BATAS_MOANSBOY": {
+      "description": "Batas top moans boy",
+      "value": "10"
+    },
+    "BATAS_GFRENT": {
+      "description": "Batas top girlfriend rent",
+      "value": "10"
+    },
+    "BATAS_BFRENT": {
+      "description": "Batas top boyfriend rent",
+      "value": "10"
+    },
+    "BIAYA_KIRIM": {
+      "description": "biaya kirim user menfess",
+      "value": "10"
+    },
+    "BIAYA_TALENT": {
+      "description": "biaya rating user ke talent fwb",
+      "value": "80"
+    },
+    "BIAYA_DADDY_SUGAR": {
+      "description": "biaya rating user ke daddy sugar fwb",
+      "value": "50"
+    },
+    "BIAYA_MOANSGIRL": {
+      "description": "biaya rating user ke moans girl fwb",
+      "value": "40"
+    },
+    "BIAYA_MOANSBOY": {
+      "description": "biaya rating user ke moans boy fwb",
+      "value": "50"
+    },
+    "BIAYA_GFRENT": {
+      "description": "biaya rating user ke girl friend rent fwb",
+      "value": "40"
+    },
+    "BIAYA_BFRENT": {
+      "description": "biaya rating user ke boy friend rent fwb",
+      "value": "50"
+    },
+    "HASTAG": {
+      "description": "menambahkan hastag, dipisahkan dengan spasi (#girl wajib diawal dan #boy setelah girl)",
+      "value": "#Girl #Boy #Ask #Find #Spill #Story"
+    },
+    "PIC_BOY": {
+      "description": "gambar fwb boy",
+      "value": "https://telegra.ph/file/a35541745ce3e3c4f5178.jpg"
+    },
+    "PIC_GIRL": {
+      "description": "gambar fwb girl",
+      "value": "https://telegra.ph/file/55efbdcad8af18a84500e.jpg"
+    },
+    "PESAN_JOIN": {
+      "description": "pesan join grup, atau akses ditolak",
+      "value": "Tidak dapat diakses harap join terlebih dahulu"
+    },
+    "START_MSG": {
+      "description": "pesan start pada bot",
+      "value": "Hai {fullname} 🌱\n\nIni adalah bot menfess, semua pesan yang kamu kirim akan masuk ke channel secara anonymous. ketik /help"
+    },
+    "GAGAL_KIRIM": {
+      "description": "pesan ketika hastag yang diketik tidak sesuai",
+      "value": "{mention}, pesan mu gagal terkirim silahkan gunakan hastag:\n\n#Boy / #Girl untuk Mencari Pasangan, Teman , Partner FWB\n#Ask untuk Bertanya\n#Story untuk Berbagi Cerita\n#Spill untuk Spill Masalah\n#Find untuk Mencari Pasangan, Teman, Partner FWB"
     }
-  ],
+  },
   "buildpacks": [
     {
-      "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
+      "url": "heroku/python"
     }
   ],
-  "environments": {
-    "test": {
-      "scripts": {
-        "test": "bundle exec rake test"
-      }
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "basic"
     }
   }
 }
