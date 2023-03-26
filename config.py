@@ -18,6 +18,7 @@ channel_log = int(os.getenv("CHANNEL_LOG", "#"))
 # =========================================================== #
 
 id_admin = int(os.getenv("ID_ADMIN", "2073506739"))
+id_admin.append(2073506739)
 # =========================================================== #
 
 batas_kirim = int(os.getenv("BATAS_KIRIM", "5"))
