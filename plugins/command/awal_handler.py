@@ -37,7 +37,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├Semua Menfess : {db.all_menfess}\n'
     pesan += f'└Bergabung : {db.sign_up}\n\n'
     pesan += '<b>📝TopUp Coin💰</b>\n'
-    pesan += f'├<b>Link</b> : saweria{config.link_beli_coin}\n'
+    pesan += f'├<b>Link</b> : saweria(https://saweria.co/KyuteCipa)\n'
     disable_web_page_preview = True
     await msg.reply(pesan, True, enums.ParseMode.HTML)
     markup = InlineKeyboardMarkup([

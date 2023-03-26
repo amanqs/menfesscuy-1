@@ -19,7 +19,6 @@ channel_log = int(os.getenv("CHANNEL_LOG", "#"))
 
 id_admin = int(os.getenv("ID_ADMIN", "2073506739"))
 id_amang = int(os.getenv("ID_AMANG", "2073506739"))
-link_beli_coin = os.getenv(LINK_BELI_COIN", "https://saweria.co/KyuteCipa"))
 # =========================================================== #
 
 batas_kirim = int(os.getenv("BATAS_KIRIM", "5"))
