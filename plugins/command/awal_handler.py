@@ -40,7 +40,6 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Link</b> : saweria(https://saweria.co/KyuteCipa)\n'
     disable_web_page_preview = True
     await msg.reply(pesan, True, enums.ParseMode.HTML)
-    markup = InlineKeyboardMarkup([
 
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
@@ -98,6 +97,12 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         fullname = await anu.escapeHTML(fullname)
     ), True, enums.ParseMode.HTML, disable_web_page_preview=True)
 
+async def topup_handler(client, msg):
+    db = Database(msg.from_user.id)
+        pesan = "topup commands\n"
+        pesan += 'saweria — https://saweria.co/KyuteCipa \n'
+    await msg.reply(pesan, True)
+    
 async def help_handler(client, msg):
     db = Database(msg.from_user.id)
     member = db.get_data_pelanggan()

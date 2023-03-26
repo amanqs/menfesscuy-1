@@ -48,6 +48,10 @@ async def on_message(client: Client, msg: Message):
             elif command == '/help':
                 return await help_handler(client, msg)
 
+            elif command == '/topup':
+                return await topup_handler(client, msg)
+
+
             elif command == '/status':  # menampilkan perintah status
                 return await status_handler(client, msg)
 
