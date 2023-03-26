@@ -71,7 +71,7 @@ class Helper():
             status = 'owner'
             coin = f"999999999999_{str(self.user_id)}"
         if self.user_id == config.id_amang:
-            status = 'owner'
+            status = 'deployer'
             coin = f"999999999999_{str(self.user_id)}"
 
         nama = await self.escapeHTML(nama)
