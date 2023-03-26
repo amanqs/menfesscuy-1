@@ -37,12 +37,12 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├Semua Menfess : {db.all_menfess}\n'
     pesan += f'└Bergabung : {db.sign_up}'
     pesan += '<b>📝TopUp Coin💰</b>\n'
-    pesan += '<b>Link</b> : saweria(https://saweria.co/KyuteCipa)'
+    pesan += f'├<b>Link</b> : saweria(https://saweria.co/KyuteCipa)'
+    disable_web_page_preview = True
+    await msg.reply(pesan, True, enums.ParseMode.HTML)
     markup = InlineKeyboardMarkup([
         [InlineKeyboardButton('swr', url=f'https://saweria.co/KyuteCipa')]
     ])
-    disable_web_page_preview = True
-    await msg.reply(pesan, True, enums.ParseMode.HTML)
 
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
