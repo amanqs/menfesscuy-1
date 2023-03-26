@@ -99,10 +99,10 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
 
 async def topup_handler(client, msg):
     db = Database(msg.from_user.id)
-        pesan = "topup commands\n"
-        pesan += 'saweria — https://saweria.co/KyuteCipa \n'
+    pesan = "topup commands\n"
+        pesan += 'saweria — https://saweria.co/KyuteCipa'
     await msg.reply(pesan, True)
-    
+
 async def help_handler(client, msg):
     db = Database(msg.from_user.id)
     member = db.get_data_pelanggan()
