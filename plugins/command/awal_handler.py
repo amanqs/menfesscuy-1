@@ -97,19 +97,14 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         fullname = await anu.escapeHTML(fullname)
     ), True, enums.ParseMode.HTML, disable_web_page_preview=True)
 
-async def topup_handler(client, msg):
-    db = Database(msg.from_user.id)
-    pesan = "topup commands\n"
-        pesan += '/topup — topup coint\n'
-        pesan += 'saweria — https://saweria.co/KyuteCipa\n'
-    await msg.reply(pesan, True)
-
 async def help_handler(client, msg):
     db = Database(msg.from_user.id)
     member = db.get_data_pelanggan()
     pesan = "Supported commands\n"
     pesan += '/status — melihat status\n'
-    pesan += '/talent — melihat talent\n'
+    pesan += '/talent — melihat talent\n\n'
+    pesan += 'TOPUP COIN\n'
+    pesan += 'PM ADMIN UNTUK MENDAPATKAN LINK TOPUP COIN\n'
     if member.status == 'admin':
         pesan += '\nHanya Admin\n'
         pesan += '/tf_coin — transfer coin\n'
