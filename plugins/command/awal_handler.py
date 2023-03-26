@@ -108,8 +108,8 @@ async def help_handler(client, msg):
         pesan += 'Perintah banned\n'
         pesan += '/ban — ban user\n'
         pesan += '/unban — unban user\n'
-    if member.status == 'owner':
-        pesan += '\n=====OWNER COMMAND=====\n'
+    if member.status == 'admin':
+        pesan += '\n=====ADMIN COMMAND=====\n'
         pesan += '/tf_coin — transfer coin\n'
         pesan += '/settings — melihat settingan bot\n'
         pesan += '/list_admin — melihat list admin\n'
