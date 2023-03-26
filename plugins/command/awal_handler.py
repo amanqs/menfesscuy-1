@@ -2,6 +2,7 @@ import config
 
 from pyrogram import Client, types, enums
 from plugins import Helper, Database
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Update
 
 async def start_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
@@ -36,7 +37,10 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├Semua Menfess : {db.all_menfess}\n'
     pesan += f'└Bergabung : {db.sign_up}'
     pesan += '<b>📝TopUp Coin💰</b>\n'
-    pesan += '<b> Link : saweria(https://saweria.co/KyuteCipa)'
+        pesan += '<b> Link : saweria(https://saweria.co/KyuteCipa)'
+    markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton('swr', url=f'https://saweria.co/KyuteCipa')]
+    ])
     disable_web_page_preview = True
     await msg.reply(pesan, True, enums.ParseMode.HTML)
 
