@@ -82,7 +82,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     first_name = msg.from_user.first_name
     last_name = msg.from_user.last_name
     fullname = first_name if not last_name else first_name + ' ' + last_name
-    username = '@JustRex' if not msg.from_user.username else '@' + msg.from_user.username
+    username = '@amwang' if not msg.from_user.username else '@' + msg.from_user.username
     mention = msg.from_user.mention
     return await msg.reply(config.gagalkirim_msg.format(
         id = msg.from_user.id,
