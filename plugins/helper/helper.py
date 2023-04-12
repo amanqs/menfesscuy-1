@@ -19,13 +19,17 @@ class Helper():
         self.user_id = message.from_user.id
         self.first = message.from_user.first_name
         self.last = message.from_user.last_name
-        self.fullname = self.first if not self.last else self.first + ' ' + self.last
+        self.fullname = f'{self.first} {self.last}' if self.last else self.first
         self.premium = message.from_user.is_premium
-        self.username = "-" if not self.message.from_user.username else '@' + self.message.from_user.username
+        self.username = (
+            f'@{self.message.from_user.username}'
+            if self.message.from_user.username
+            else "-"
+        )
         self.mention = self.message.from_user.mention
 
     async def escapeHTML(self, text: str):
-        if text == None:
+        if text is None:
             return ''
         return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
@@ -46,10 +50,7 @@ class Helper():
             enums.ChatMemberStatus.MEMBER,
             enums.ChatMemberStatus.ADMINISTRATOR
         ]
-        if not member.status in status:
-            return False
-        else:
-            return True
+        return member.status in status
 
     async def pesan_langganan(self):
         link_1 = await self.bot.export_chat_invite_link(config.channel_1)
@@ -87,15 +88,7 @@ class Helper():
         return await database.tambah_pelanggan(data)
 
     async def send_to_channel_log(self, type: str = None, link: str = None):
-        if type == 'log_daftar':
-            pesan = "<b>📊DATA USER BERHASIL DITAMBAHKAN DIDATABASE</b>\n"
-            pesan += f"├ Nama -: <b>{await self.escapeHTML(self.fullname)}</b>\n"
-            pesan += f"├ ID -: <code>{self.user_id}</code>\n"
-            pesan += f"├ Username -: {self.username}\n"
-            pesan += f"├ Mention -: {self.mention}\n"
-            pesan += f"├ Kirim pesan -: <a href='tg://openmessage?user_id={self.user_id}'>{await self.escapeHTML(self.fullname)}</a>\n"
-            pesan += f"└ Telegram Premium -: {'❌' if not self.premium else '✅'}"
-        elif type == 'log_channel':
+        if type == 'log_channel':
             pesan = "INFO MESSAGE 💌\n"
             pesan += f"├ Nama -: <b>{await self.escapeHTML(self.fullname)}</b>\n"
             pesan += f"├ ID -: <code>{self.user_id}</code>\n"
@@ -104,6 +97,14 @@ class Helper():
             pesan += f"├ Kirim pesan -: <a href='tg://openmessage?user_id={self.user_id}'>{await self.escapeHTML(self.fullname)}</a>\n"
             pesan += f"├ Cek Pesan : <a href='{link}'>Lihat pesan</a>\n"
             pesan += f"└ Waktu -: {self.get_time().full_time}"
+        elif type == 'log_daftar':
+            pesan = "<b>📊DATA USER BERHASIL DITAMBAHKAN DIDATABASE</b>\n"
+            pesan += f"├ Nama -: <b>{await self.escapeHTML(self.fullname)}</b>\n"
+            pesan += f"├ ID -: <code>{self.user_id}</code>\n"
+            pesan += f"├ Username -: {self.username}\n"
+            pesan += f"├ Mention -: {self.mention}\n"
+            pesan += f"├ Kirim pesan -: <a href='tg://openmessage?user_id={self.user_id}'>{await self.escapeHTML(self.fullname)}</a>\n"
+            pesan += f"└ Telegram Premium -: {'✅' if self.premium else '❌'}"
         else:
             pesan = "Jangan Lupa Main Bot @AlterFWBBot"
         await self.bot.send_message(config.channel_log, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
@@ -112,12 +113,11 @@ class Helper():
         y = str(uang)
         if int(y) < 0:
             return y
-        if len(y) <= 3 :
+        if len(y) <= 3:
             return y
-        else :
-            p = y[-3:]
-            q = y[:-3]
-            return self.formatrupiah(q) + '.' + p
+        p = y[-3:]
+        q = y[:-3]
+        return f'{self.formatrupiah(q)}.{p}'
 
     def get_time(self):
         hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"]

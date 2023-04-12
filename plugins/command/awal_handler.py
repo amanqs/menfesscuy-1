@@ -8,8 +8,10 @@ async def start_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     first = msg.from_user.first_name
     last = msg.from_user.last_name
-    fullname = first if not last else first + ' ' + last
-    username = '@amwang' if not msg.from_user.username else '@' + msg.from_user.username
+    fullname = f'{first} {last}' if last else first
+    username = (
+        f'@{msg.from_user.username}' if msg.from_user.username else '@amwang'
+    )
     mention = msg.from_user.mention
     await msg.reply_text(
         text = config.start_msg.format(
@@ -60,33 +62,39 @@ async def statistik_handler(client: Helper, id_bot: int):
 async def list_admin_handler(helper: Helper, id_bot: int):
     db = Database(helper.user_id).get_data_bot(id_bot)
     pesan = "<b>Owner bot</b>\n"
-    pesan += "• ID: " + str(config.id_admin) + " | <a href='tg://user?id=" + str(config.id_admin) + "'>Owner bot</a>\n\n"
+    pesan += (
+        f"• ID: {str(config.id_admin)} | <a href='tg://user?id={str(config.id_admin)}"
+        + "'>Owner bot</a>\n\n"
+    )
     if len(db.admin) > 0:
         pesan += "<b>Daftar Admin bot</b>\n"
-        ind = 1
-        for i in db.admin:
-            pesan += "• ID: " + str(i) + " | <a href='tg://user?id=" + str(i) + "'>Admin " + str(ind) + "</a>\n"
-            ind += 1
+        for ind, i in enumerate(db.admin, start=1):
+            pesan += (
+                f"• ID: {str(i)} | <a href='tg://user?id={str(i)}'>Admin {str(ind)}"
+                + "</a>\n"
+            )
     await helper.message.reply_text(pesan, True, enums.ParseMode.HTML)
 
 async def list_ban_handler(helper: Helper, id_bot: int):
     db = Database(helper.user_id).get_data_bot(id_bot)
     if len(db.ban) == 0:
         return await helper.message.reply_text('<i>Tidak ada user dibanned saat ini</i>', True, enums.ParseMode.HTML)
-    else:
-        pesan = "<b>Daftar banned</b>\n"
-        ind = 1
-        for i in db.ban:
-            pesan += "• ID: " + str(i) + " | <a href='tg://openmessage?user_id=" + str(i) + "'>( " + str(ind) + " )</a>\n"
-            ind += 1
+    pesan = "<b>Daftar banned</b>\n"
+    for ind, i in enumerate(db.ban, start=1):
+        pesan += (
+            f"• ID: {str(i)} | <a href='tg://openmessage?user_id={str(i)}'>( {str(ind)}"
+            + " )</a>\n"
+        )
     await helper.message.reply_text(pesan, True, enums.ParseMode.HTML)
 
 async def gagal_kirim_handler(client: Client, msg: types.Message):
     anu = Helper(client, msg)
     first_name = msg.from_user.first_name
     last_name = msg.from_user.last_name
-    fullname = first_name if not last_name else first_name + ' ' + last_name
-    username = '@amwang' if not msg.from_user.username else '@' + msg.from_user.username
+    fullname = f'{first_name} {last_name}' if last_name else first_name
+    username = (
+        f'@{msg.from_user.username}' if msg.from_user.username else '@amwang'
+    )
     mention = msg.from_user.mention
     return await msg.reply(config.gagalkirim_msg.format(
         id = msg.from_user.id,
@@ -100,8 +108,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
 async def help_handler(client, msg):
     db = Database(msg.from_user.id)
     member = db.get_data_pelanggan()
-    pesan = "Supported commands\n"
-    pesan += '/status — melihat status\n'
+    pesan = "Supported commands\n" + '/status — melihat status\n'
     pesan += '/talent — melihat talent\n\n'
     pesan += 'TOPUP COIN\n'
     pesan += 'PM ADMIN UNTUK MENDAPATKAN LINK TOPUP COIN\n'
@@ -114,7 +121,6 @@ async def help_handler(client, msg):
         pesan += 'Perintah banned\n'
         pesan += '/ban — ban user\n'
         pesan += '/unban — unban user\n'
-    if member.status == 'admin':
         pesan += '\n=====ADMIN COMMAND=====\n'
         pesan += '/tf_coin — transfer coin\n'
         pesan += '/settings — melihat settingan bot\n'
