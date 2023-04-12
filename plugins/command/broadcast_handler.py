@@ -10,15 +10,16 @@ from pyrogram.errors import (
 from plugins import Database
 
 async def broadcast_handler(client: Client, msg: Message):
-    if msg.reply_to_message != None:
+    if msg.reply_to_message is None:
+        await msg.reply('Harap reply sebuah pesan', True)
+
+    else:
         anu = msg.reply_to_message
         anu = await anu.copy(msg.chat.id, reply_to_message_id=anu.id)
         markup = InlineKeyboardMarkup([
             [InlineKeyboardButton('Ya', 'ya_confirm'), InlineKeyboardButton('Tidak', 'tidak_confirm')]
         ])
         await anu.reply('apakah kamu akan mengirimkan pesan broadcast ?', True, reply_markup=markup)
-    else:
-        await msg.reply('Harap reply sebuah pesan', True)
 
 async def broadcast_ya(client: Client, query: CallbackQuery):
     msg = query.message
@@ -29,7 +30,7 @@ async def broadcast_ya(client: Client, query: CallbackQuery):
         return
     message = msg.reply_to_message
     user_ids = db.get_pelanggan().id_pelanggan
-    
+
     berhasil = 0
     dihapus = 0
     blokir = 0
@@ -52,7 +53,7 @@ async def broadcast_ya(client: Client, query: CallbackQuery):
             await db.hapus_pelanggan(user_id)
     text = f"""<b>Broadcast selesai</b>
     
-Jumlah pengguna: {str(len(user_ids))}
+Jumlah pengguna: {len(user_ids)}
 Berhasil terkirim: {str(berhasil)}
 Pengguna diblokir: {str(blokir)}
 Akun yang dihapus: {str(dihapus)} (<i>Telah dihapus dari database</i>)

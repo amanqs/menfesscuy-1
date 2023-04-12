@@ -10,4 +10,4 @@ class Waktu():
         self.jam = json['jam']
         self.full_time = json['full']
     def __str__(self) -> str:
-        return str(json.dumps(self.json, indent=3))
+        return json.dumps(self.json, indent=3)
